@@ -6,12 +6,12 @@ from PIL import Image
 import color_extractor
 
 st.write("## Color Extractor")
-st.write("Test")
+st.write("140810230042 - Hamud Abdul Aziz")
 x = st.file_uploader("Masukan foto",accept_multiple_files=False)
 n_colors = 0
 pic_path = ""
 if x:
-    n_colors = st.number_input("Masukan output warna!", min_value=3, max_value=10)
+    n_colors = st.number_input("Masukan jumlahgi output warna!", min_value=3, max_value=10)
     pic_path = "picture/pic1.jpg"
     pic = Image.open(x)
     pic.save(pic_path)
