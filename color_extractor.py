@@ -37,6 +37,8 @@ def extract_colors(image_path, n_colors=6):
     quanticized_images.append(np.uint8(centers)[labels.flatten()].reshape((resized_img_np.shape)))
     resized_imgs.append(resized_img_np)
 
+    hex_colors = ['#{:02x}{:02x}{:02x}'.format(r, g, b) for r, g, b in ordered_palette]
+
     end_time = time.time() - start_time
 
     return {
@@ -44,5 +46,6 @@ def extract_colors(image_path, n_colors=6):
         "resized_image": resized_img,
         "palette": ordered_palette,
         "quanticized_image": quanticized_images[0],
-        "duration": end_time
+        "duration": end_time,
+        "hex_color":hex_colors,
     }

@@ -33,11 +33,17 @@ if button_start and x:
 
     palette = result["palette"]
 
-    plt.figure(figsize=(8, 2))
+    plt.figure(figsize=(n_colors, 2))  # width scales with number of colors
     plt.imshow([palette.astype("uint8")])
-    plt.title("Extracted Palette")
     plt.axis('off')
-    st.pyplot(plt)
+    plt.title("Extracted Palette", fontsize=14)
 
-    # Show quanticized image
+    # Add hex codes below each color
+    for idx, hex_code in enumerate(result["hex_color"]):
+        plt.text(
+            x=idx, y=0.55, s=hex_code, ha='center', va='top',
+            fontsize=5, color='black', rotation=0, weight='bold'
+        )
+
+    st.pyplot(plt)
     st.image(result["quanticized_image"], caption=f"Quantized with {n_colors} colors")
